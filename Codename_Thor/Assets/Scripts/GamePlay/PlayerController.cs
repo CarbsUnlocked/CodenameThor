@@ -7,17 +7,20 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpForce = 10f;
     private bool isGrounded = false;
+            // Number of lives the player starts with
     private Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 2;
     }
 
     void Update()
     {
         // Move the player automatically
-        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+       transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+
 
         // Jump when space is pressed
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -26,6 +29,8 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
         }
     }
+
+    
 
     void OnCollisionEnter2D(Collision2D collision)
     {

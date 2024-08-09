@@ -64,4 +64,10 @@ public class ShortcutManager : MonoBehaviour
         playerMove.Jump();
         SetRandomShortcut();
     }
+
+    void OnWrongShortcut()
+    {
+        Debug.Log("Wrong Shortcut!");
+        playerMove.LoseLife();
+    }
 }
