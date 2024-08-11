@@ -9,7 +9,7 @@ public class PlayerMove : MonoBehaviour
     public float moveSpeed = 5f;  // Speed at which the player moves forward
     public float jumpForce = 5f;  // Force applied when the player jumps
     public int lives = 3;         // Number of lives the player starts with
-     public TextMeshProUGUI livesText;  // Reference to the TextMeshPro UI element
+    //  public TextMeshProUGUI livesText;  // Reference to the TextMeshPro UI element
       public Image[] lifeImages;    // Array of Image components representing lives
      public Animator animator;     // Reference to the Animator component
 
