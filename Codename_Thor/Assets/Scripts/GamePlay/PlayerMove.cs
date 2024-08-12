@@ -16,12 +16,15 @@ public class PlayerMove : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    public LogicScript logic;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 2;  // Optional: Adjust gravity for better jump behavior
-
          UpdateLivesUI();  // Initialize the lives UI
+
+        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
     }
 
     void Update()
@@ -50,7 +53,10 @@ public class PlayerMove : MonoBehaviour
 
         if (lives <= 0)
         {
+            logic.GameOver();
             GameOver();
+             
+
         }
     }
 
@@ -73,7 +79,8 @@ public class PlayerMove : MonoBehaviour
     void GameOver()
     {
         Debug.Log("Game Over!");
-        Time.timeScale = 0;  // Pause the game
+        Destroy(gameObject); // Destroy game object as game is over
+        // Time.timeScale = 0;  // Pause the game
     }
 
     bool IsGrounded()
