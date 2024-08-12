@@ -6198,6 +6198,8 @@ MonoBehaviour:
   - {fileID: 2652522633894733196, guid: 8996df738ded1a248a2b21931aa3e031, type: 3}
   - {fileID: 4154287992509495693, guid: cfd2adda1c6257744a85f5cafbbcd276, type: 3}
   - {fileID: 7581065522190724194, guid: 9eb3b759bab7b0741b7145b300f4d257, type: 3}
+  - {fileID: 678767349750526612, guid: 4a4944c770e79c04e8b535ac2998643f, type: 3}
+  - {fileID: 6644485654812610216, guid: 180d2a177e6204e4daece23ae0b614c6, type: 3}
   obstacleSpawnTime: 8
   obstacleSpeed: 3
 --- !u!4 &1185881239
