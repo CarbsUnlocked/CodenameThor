@@ -43,3 +43,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Sky
+    uniqueID: 3981024021
+    locked: 0
+  - name: Building 1
+    uniqueID: 623188109
+    locked: 0
+  - name: Building 2
+    uniqueID: 1205006313
+    locked: 0
+  - name: Fence
+    uniqueID: 2224222245
+    locked: 0
+  - name: UI
+    uniqueID: 1493888247
+    locked: 0
