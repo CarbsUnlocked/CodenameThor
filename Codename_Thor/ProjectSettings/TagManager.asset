@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Obstacle
+  - Ground
+  - Logic
   layers:
   - Default
   - TransparentFX
@@ -49,6 +52,9 @@ TagManager:
     locked: 0
   - name: Building 2
     uniqueID: 1205006313
+    locked: 0
+  - name: Bush
+    uniqueID: 3186604003
     locked: 0
   - name: Fence
     uniqueID: 2224222245

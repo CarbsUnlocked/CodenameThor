@@ -52,7 +52,7 @@ public class PlayerMove : MonoBehaviour
         {
             logic.GameOver();
             GameOver();
-            gameOverSound.Play();
+            // gameOverSound.Play();
 
         }
     }
