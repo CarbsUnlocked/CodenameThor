@@ -7,6 +7,7 @@ public class PlayerCollision : MonoBehaviour
     public LogicScript logic;             // Reference to the LogicScript (for game over handling)
     public PlayerMove playerMove;         // Reference to the PlayerMove script
     public GameObject deathUIScreen;      // Reference to the death UI screen GameObject
+    public AudioSource playerHitAudio;
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (other.transform.tag == "Obstacle")
         {
+            playerHitAudio.Play();
             playerMove.LoseLife();  // Call LoseLife() from the PlayerMove script
 
             if (playerMove.lives <= 0)

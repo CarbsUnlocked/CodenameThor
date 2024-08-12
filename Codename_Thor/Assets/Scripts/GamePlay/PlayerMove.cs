@@ -11,6 +11,7 @@ public class PlayerMove : MonoBehaviour
     public int lives = 3;         // Number of lives the player starts with
     public Image[] lifeImages;    // Array of Image components representing lives
     // public Animator animator;     // Reference to the Animator component
+    public AudioSource gameOverSound;
 
     private Rigidbody2D rb;
 
@@ -78,6 +79,7 @@ public class PlayerMove : MonoBehaviour
         Debug.Log("Game Over!");
         Destroy(gameObject); // Destroy game object as game is over
         // Time.timeScale = 0;  // Pause the game
+        gameOverSound.Play();
 
     }
 
