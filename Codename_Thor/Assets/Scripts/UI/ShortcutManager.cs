@@ -16,7 +16,7 @@ public class ShortcutManager : MonoBehaviour
         { "Paste", new KeyCode[] { KeyCode.LeftControl, KeyCode.V } },
         { "Save", new KeyCode[] { KeyCode.LeftControl, KeyCode.S } },
         { "Undo", new KeyCode[] { KeyCode.LeftControl, KeyCode.Z } },
-        { "Go to All", new KeyCode[] { KeyCode.LeftControl, KeyCode.B } }
+        
     };
 
     private string currentShortcutName;
@@ -53,7 +53,10 @@ public class ShortcutManager : MonoBehaviour
 
     void Update()
     {
-        CheckShortcutInput();
+        if (Application.isFocused)
+        {
+            CheckShortcutInput();
+        }
     }
 
     void CheckShortcutInput()
