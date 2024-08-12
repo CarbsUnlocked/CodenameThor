@@ -9,10 +9,8 @@ public class PlayerMove : MonoBehaviour
     public float moveSpeed = 5f;  // Speed at which the player moves forward
     public float jumpForce = 5f;  // Force applied when the player jumps
     public int lives = 3;         // Number of lives the player starts with
-    //  public TextMeshProUGUI livesText;  // Reference to the TextMeshPro UI element
-      public Image[] lifeImages;    // Array of Image components representing lives
-     public Animator animator;     // Reference to the Animator component
-
+    public Image[] lifeImages;    // Array of Image components representing lives
+    // public Animator animator;     // Reference to the Animator component
 
     private Rigidbody2D rb;
 
@@ -21,7 +19,7 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 2;  // Optional: Adjust gravity for better jump behavior
 
-         UpdateLivesUI();  // Initialize the lives UI
+        UpdateLivesUI();  // Initialize the lives UI
     }
 
     void Update()
@@ -38,7 +36,7 @@ public class PlayerMove : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
 
             // Trigger the jump animation
-            animator.SetTrigger("JumpTrigger");
+            // animator.SetTrigger("JumpTrigger");
         }
     }
 
@@ -46,7 +44,7 @@ public class PlayerMove : MonoBehaviour
     {
         lives--;
         Debug.Log("Lives remaining: " + lives);
-         UpdateLivesUI();  // Update the UI after losing a life
+        UpdateLivesUI();  // Update the UI after losing a life
 
         if (lives <= 0)
         {
@@ -56,7 +54,7 @@ public class PlayerMove : MonoBehaviour
 
     void UpdateLivesUI()
     {
-         // Update the sprite visibility based on remaining lives
+        // Update the sprite visibility based on remaining lives
         for (int i = 0; i < lifeImages.Length; i++)
         {
             if (i < lives)
@@ -78,18 +76,10 @@ public class PlayerMove : MonoBehaviour
 
     bool IsGrounded()
     {
-        // Check if the player is on the ground
-        // This can be done by checking if the player's collider is in contact with the ground
-        return rb.velocity.y == 0;
+        // Cast a ray downwards from the player's position to check if the player is on the ground
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f);
+
+        // Return true if the ray hit something (i.e., the ground)
+        return hit.collider != null;
     }
-
-    // void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Obstacle"))
-    //     {
-    //         // Handle game over logic
-    //         Time.timeScale = 0;
-    //     }
-    // }
-
 }
