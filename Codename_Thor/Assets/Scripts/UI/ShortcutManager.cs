@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -12,6 +11,8 @@ public class ShortcutManager : MonoBehaviour
     private string[] shortcutNames = { "CopyShortcut", "PasteShortcut", "SaveShortcut", "UndoShortcut" };
     private string currentShortcutName;
 
+    private List<string> usedShortcuts = new List<string>();
+
     void Start()
     {
         SetRandomShortcut();
@@ -20,9 +21,12 @@ public class ShortcutManager : MonoBehaviour
 
     void SetRandomShortcut()
     {
-        // Select a random shortcut from the list
-        int randomIndex = Random.Range(0, shortcutNames.Length);
-        currentShortcutName = shortcutNames[randomIndex];
+        // Select a random shortcut that hasn't been used yet
+        do
+        {
+            int randomIndex = Random.Range(0, shortcutNames.Length);
+            currentShortcutName = shortcutNames[randomIndex];
+        } while (usedShortcuts.Contains(currentShortcutName));
 
         // Display the name of the shortcut
         shortcutPrompt.text = "Shortcut: " + currentShortcutName.Replace("Shortcut", "");
@@ -44,16 +48,14 @@ public class ShortcutManager : MonoBehaviour
         {
             OnCorrectShortcut();
         }
-        else if (Input.anyKeyDown)
-        {
-            OnWrongShortcut();
-        }
     }
 
     void OnCorrectShortcut()
     {
         Debug.Log("Correct Shortcut: " + currentShortcutName);
         playerMove.Jump();  // Make the player jump
+
+        usedShortcuts.Add(currentShortcutName);  // Add to used shortcuts list
 
         wrongShortcutText.text = "";  // Clear any previous wrong message
 
