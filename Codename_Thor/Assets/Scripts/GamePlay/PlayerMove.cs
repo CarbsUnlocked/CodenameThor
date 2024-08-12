@@ -13,7 +13,7 @@ public class PlayerMove : MonoBehaviour
       public Image[] lifeImages;    // Array of Image components representing lives
      public Animator animator;     // Reference to the Animator component
     public AudioSource hitSoundPlayer; //Soundplayer for hitting an object
-    public AudioSource gameOverSound;
+    public AudioSource gameOverSound; //SoundPlayer for Game over
 
 
     private Rigidbody2D rb;

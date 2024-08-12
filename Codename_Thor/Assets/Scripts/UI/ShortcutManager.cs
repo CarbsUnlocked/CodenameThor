@@ -9,7 +9,7 @@ public class ShortcutManager : MonoBehaviour
     public GameObject winMenu;  // Reference to the Win Menu UI
     public TextMeshProUGUI wrongShortcutText;  // Reference to the Wrong Shortcut Text UI
     public PlayerMove playerMove;  // Reference to the PlayerController
-    public GameObject player;
+    public AudioSource correctShortcutSound; //Sound for correct shortcut
 // Dictionary of shortcut names and their corresponding key combinations
     private Dictionary<string, KeyCode[]> shortcuts = new Dictionary<string, KeyCode[]>
     {
@@ -79,7 +79,7 @@ public class ShortcutManager : MonoBehaviour
     {
         Debug.Log("Correct Shortcut: " + currentShortcutName);
         playerMove.Jump();  // Make the player jump
-        player.Jump();
+        correctShortcutSound.Play();
         SetRandomShortcut();
     }
 
