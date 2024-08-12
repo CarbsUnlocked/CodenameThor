@@ -12,6 +12,8 @@ public class PlayerMove : MonoBehaviour
     //  public TextMeshProUGUI livesText;  // Reference to the TextMeshPro UI element
       public Image[] lifeImages;    // Array of Image components representing lives
      public Animator animator;     // Reference to the Animator component
+    public AudioSource hitSoundPlayer; //Soundplayer for hitting an object
+    public AudioSource gameOverSound;
 
 
     private Rigidbody2D rb;
@@ -55,7 +57,7 @@ public class PlayerMove : MonoBehaviour
         {
             logic.GameOver();
             GameOver();
-             
+            gameOverSound.Play();
 
         }
     }
@@ -81,6 +83,7 @@ public class PlayerMove : MonoBehaviour
         Debug.Log("Game Over!");
         Destroy(gameObject); // Destroy game object as game is over
         // Time.timeScale = 0;  // Pause the game
+
     }
 
     bool IsGrounded()
@@ -90,13 +93,14 @@ public class PlayerMove : MonoBehaviour
         return rb.velocity.y == 0;
     }
 
-    // void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Obstacle"))
-    //     {
-    //         // Handle game over logic
-    //         Time.timeScale = 0;
-    //     }
-    // }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            hitSoundPlayer.Play();
+            LoseLife();
+            
+        }
+    }
 
 }
