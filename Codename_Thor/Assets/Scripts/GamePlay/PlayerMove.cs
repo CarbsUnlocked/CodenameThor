@@ -53,8 +53,9 @@ public class PlayerMove : MonoBehaviour
 
         if (lives <= 0)
         {
+            logic.GameOver();
             GameOver();
-            logic.GameOver();   
+             
 
         }
     }
@@ -78,7 +79,8 @@ public class PlayerMove : MonoBehaviour
     void GameOver()
     {
         Debug.Log("Game Over!");
-        Time.timeScale = 0;  // Pause the game
+        Destroy(gameObject); // Destroy game object as game is over
+        // Time.timeScale = 0;  // Pause the game
     }
 
     bool IsGrounded()
