@@ -7,6 +7,7 @@ public class ShortcutManager : MonoBehaviour
     public TextMeshProUGUI shortcutPrompt;
     public PlayerMove playerMove;  // Reference to the PlayerController
     public TextMeshProUGUI wrongShortcutText;  // Reference to the Wrong Shortcut Text UI
+    public AudioSource playerCorrectShortcutAudio;
 
     private string[] shortcutNames = { "CopyShortcut", "PasteShortcut", "SaveShortcut" };
     private string currentShortcutName;
@@ -75,6 +76,7 @@ public class ShortcutManager : MonoBehaviour
     void OnCorrectShortcut()
     {
         Debug.Log("Correct Shortcut: " + currentShortcutName);
+        playerCorrectShortcutAudio.Play();
         playerMove.Jump();  // Make the player jump
 
         usedShortcuts.Add(currentShortcutName);  // Add to used shortcuts list
