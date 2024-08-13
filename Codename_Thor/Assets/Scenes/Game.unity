@@ -5905,7 +5905,7 @@ MonoBehaviour:
   - {fileID: 2652522633894733196, guid: 8996df738ded1a248a2b21931aa3e031, type: 3}
   - {fileID: 4154287992509495693, guid: cfd2adda1c6257744a85f5cafbbcd276, type: 3}
   - {fileID: 7581065522190724194, guid: 9eb3b759bab7b0741b7145b300f4d257, type: 3}
-  obstacleSpawnTime: 5
+  obstacleSpawnTime: 6
   obstacleSpeed: 1
 --- !u!4 &1185881239
 Transform:
