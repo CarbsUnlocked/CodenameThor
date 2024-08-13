@@ -8,7 +8,7 @@ public class ShortcutManager : MonoBehaviour
     public PlayerMove playerMove;  // Reference to the PlayerController
     public TextMeshProUGUI wrongShortcutText;  // Reference to the Wrong Shortcut Text UI
 
-    private string[] shortcutNames = { "CopyShortcut", "PasteShortcut", "SaveShortcut", "UndoShortcut" };
+    private string[] shortcutNames = { "CopyShortcut", "PasteShortcut", "SaveShortcut" };
     private string currentShortcutName;
 
     private List<string> usedShortcuts = new List<string>();
@@ -19,19 +19,41 @@ public class ShortcutManager : MonoBehaviour
         wrongShortcutText.text = "";  // Initialize with no text
     }
 
-    void SetRandomShortcut()
+   void SetRandomShortcut()
+{
+    // Check if all shortcuts have been used
+    if (usedShortcuts.Count >= shortcutNames.Length)
     {
-        // Select a random shortcut that hasn't been used yet
-        do
-        {
-            int randomIndex = Random.Range(0, shortcutNames.Length);
-            currentShortcutName = shortcutNames[randomIndex];
-        } while (usedShortcuts.Contains(currentShortcutName));
+        // Reset the usedShortcuts list or handle as needed
+        Debug.Log("All shortcuts have been used. Resetting...");
+        usedShortcuts.Clear();  // Clear the list to allow the same shortcuts again
 
-        // Display the name of the shortcut
-        shortcutPrompt.text = "Shortcut: " + currentShortcutName.Replace("Shortcut", "");
-        Debug.Log("Shortcut: " + currentShortcutName);
+        // Optionally, you could shuffle the shortcuts or end the game
+        // return;  // If you want to stop adding shortcuts, uncomment this line
     }
+
+    int safetyCounter = 0;
+    const int maxSafetyCounter = 100; // To prevent infinite loops
+
+    // Select a random shortcut that hasn't been used yet
+    do
+    {
+        if (safetyCounter++ > maxSafetyCounter)
+        {
+            Debug.LogError("SetRandomShortcut() is stuck in an infinite loop!");
+            return;
+        }
+
+        int randomIndex = Random.Range(0, shortcutNames.Length);
+        currentShortcutName = shortcutNames[randomIndex];
+
+    } while (usedShortcuts.Contains(currentShortcutName));
+
+    // Display the name of the shortcut
+    shortcutPrompt.text = "Shortcut: " + currentShortcutName.Replace("Shortcut", "");
+    Debug.Log("Shortcut: " + currentShortcutName);
+}
+
 
     void Update()
     {

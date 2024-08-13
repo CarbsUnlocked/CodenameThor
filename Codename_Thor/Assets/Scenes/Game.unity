@@ -6198,7 +6198,7 @@ MonoBehaviour:
   - {fileID: 4154287992509495693, guid: cfd2adda1c6257744a85f5cafbbcd276, type: 3}
   - {fileID: 7581065522190724194, guid: 9eb3b759bab7b0741b7145b300f4d257, type: 3}
   obstacleSpawnTime: 8
-  obstacleSpeed: 3
+  obstacleSpeed: 5
 --- !u!4 &1185881239
 Transform:
   m_ObjectHideFlags: 0
@@ -8732,7 +8732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpForce: 10
+  jumpForce: 11
   lives: 5
   lifeImages:
   - {fileID: 2025551987}
